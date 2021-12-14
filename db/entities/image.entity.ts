@@ -7,7 +7,7 @@ export class Image {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 255, name: 'img_url' })
+  @Column({ type: 'varchar', length: 255, name: 'img_url', nullable: true })
   imgUrl: string;
 
   @ManyToOne(() => Category)

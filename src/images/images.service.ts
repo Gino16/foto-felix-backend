@@ -20,7 +20,7 @@ export class ImagesService {
     return image;
   }
 
-  async createTask(image: Image): Promise<Image> {
+  async createOrUpdateTask(image: Image): Promise<Image> {
     return this.imageRepository.save(image);
   }
 
