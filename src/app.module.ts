@@ -9,7 +9,7 @@ import { ImagesModule } from './images/images.module';
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'postgres',
+      username: 'gino',
       password: '1234',
       database: 'fotofelix',
       autoLoadEntities: true,
