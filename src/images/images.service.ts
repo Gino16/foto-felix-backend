@@ -25,6 +25,6 @@ export class ImagesService {
   }
 
   async findAll(): Promise<Image[]> {
-    return this.imageRepository.find({ relations: ['category', 'client'] });
+    return this.imageRepository.find({ relations: ['category', 'client'], order: { id: 'ASC' } });
   }
 }
