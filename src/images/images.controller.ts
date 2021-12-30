@@ -11,11 +11,15 @@ export class ImagesController {
     return this.imageService.findAll();
   }
 
-  @Get('/:id')
+  @Get('/search/:id')
   getImageById(@Param('id') id: number) {
     return this.imageService.getImageById(id);
   }
 
+  @Get('/search')
+  searchImage(@Body() image: Image) {
+    return this.imageService.searchImage(image);
+  }
   @Post()
   createTask(@Body() image: Image) {
     return this.imageService.createOrUpdateTask(image);

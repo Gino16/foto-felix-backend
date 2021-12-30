@@ -30,4 +30,30 @@ export class ImagesService {
       order: { id: 'ASC' },
     });
   }
+
+  async searchImage(image: Image): Promise<Image[]> {
+    let where: any;
+    if (image.category && image.client) {
+      where = {
+        category: image.category,
+        client: image.client,
+      };
+    } else if (image.category) {
+      where = {
+        category: image.category,
+      };
+    } else if (image.client) {
+      where = {
+        client: image.client,
+      };
+    } else {
+      where = {};
+    }
+
+    return this.imageRepository.find({
+      where: where,
+      relations: ['category', 'client'],
+      order: { id: 'ASC' },
+    });
+  }
 }
