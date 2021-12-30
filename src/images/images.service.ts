@@ -7,7 +7,7 @@ import { Image } from 'db/entities/image.entity';
 export class ImagesService {
   constructor(
     @InjectRepository(ImageRepository) private imageRepository: ImageRepository,
-  ) { }
+  ) {}
 
   async getImageById(id: number): Promise<Image> {
     const image = await this.imageRepository.findOne({
@@ -25,6 +25,9 @@ export class ImagesService {
   }
 
   async findAll(): Promise<Image[]> {
-    return this.imageRepository.find({ relations: ['category', 'client'], order: { id: 'ASC' } });
+    return this.imageRepository.find({
+      relations: ['category', 'client'],
+      order: { id: 'ASC' },
+    });
   }
 }
