@@ -56,4 +56,8 @@ export class ImagesService {
       order: { id: 'ASC' },
     });
   }
+
+  async deleteTask(id: number): Promise<void> {
+    await this.imageRepository.delete(id);
+  }
 }

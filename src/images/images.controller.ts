@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { Image } from 'db/entities/image.entity';
 import { ImagesService } from './images.service';
 
@@ -23,5 +23,10 @@ export class ImagesController {
   @Post()
   createTask(@Body() image: Image) {
     return this.imageService.createOrUpdateTask(image);
+  }
+
+  @Delete('/:id')
+  deleteTask(@Param('id') id: number) {
+    return this.imageService.deleteTask(id);
   }
 }
