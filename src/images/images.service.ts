@@ -17,6 +17,7 @@ export class ImagesService {
     if (!image) {
       throw new NotFoundException(`Image with id "${id}" not found`);
     }
+    image.imgUrl = `${process.env.STORAGE}/uploads/${image.imgUrl}`;
     return image;
   }
 
@@ -25,10 +26,14 @@ export class ImagesService {
   }
 
   async findAll(): Promise<Image[]> {
-    return this.imageRepository.find({
+    const images = this.imageRepository.find({
       relations: ['category', 'client'],
       order: { id: 'ASC' },
     });
+    (await images).map((image) => {
+      image.imgUrl = `${process.env.STORAGE}/uploads/${image.imgUrl}`;
+    });
+    return images;
   }
 
   async searchImage(image: Image): Promise<Image[]> {
@@ -50,11 +55,15 @@ export class ImagesService {
       where = {};
     }
 
-    return this.imageRepository.find({
+    const images = this.imageRepository.find({
       where: where,
       relations: ['category', 'client'],
       order: { id: 'ASC' },
     });
+    (await images).map((image) => {
+      image.imgUrl = `${process.env.STORAGE}/uploads/${image.imgUrl}`;
+    });
+    return images;
   }
 
   async deleteTask(id: number): Promise<void> {
