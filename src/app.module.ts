@@ -7,6 +7,7 @@ import { ClientsModule } from './clients/clients.module';
 import { CategoriesModule } from './categories/categories.module';
 import { FilesModule } from './files/files.module';
 import { UploadsController } from './uploads/uploads.controller';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { UploadsController } from './uploads/uploads.controller';
     ClientsModule,
     CategoriesModule,
     FilesModule,
+    AuthModule,
   ],
   controllers: [UploadsController],
 })
