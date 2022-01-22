@@ -13,7 +13,7 @@ import { Category } from 'db/entities/category.entity';
 import { CategoriesService } from './categories.service';
 
 @Controller('categories')
-@UseGuards(AuthGuard())
+// @UseGuards(AuthGuard())
 export class CategoriesController {
   constructor(private categoriesService: CategoriesService) {}
 
