@@ -41,7 +41,9 @@ export class ClientsService {
     return await this.clientRepository.save(client);
   }
 
-  async deleteClient(id: number): Promise<void> {
+  async deleteClient(id: number): Promise<Client> {
+    const client = await this.getClientById(id);
     await this.clientRepository.delete(id);
+    return client;
   }
 }

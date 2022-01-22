@@ -36,7 +36,9 @@ export class CategoriesService {
     });
   }
 
-  async deleteCategory(id: number): Promise<void> {
+  async deleteCategory(id: number): Promise<Category> {
+    const category = await this.getCategoryById(id);
     await this.categoryRepository.delete(id);
+    return category;
   }
 }
