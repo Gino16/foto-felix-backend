@@ -14,7 +14,7 @@ export class Client {
   @Column({ type: 'varchar', length: 255, name: 'lastname' })
   lastname: string;
 
-  @Column({ type: 'varchar', length: 255, name: 'phone', unique: true })
+  @Column({ type: 'varchar', length: 255, name: 'phone', unique: true})
   phone: string;
 
   @Column({ type: 'varchar', length: 255, name: 'email' })

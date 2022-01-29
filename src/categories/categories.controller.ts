@@ -42,6 +42,11 @@ export class CategoriesController {
   }
   @Post()
   createOrUpdateCategory(@Body() category: Category) {
+    if (category.name != '') {
+      category.name = category.name.toLowerCase();
+    } else {
+      return;
+    }
     return this.categoriesService.createOrUpdateCategory(category);
   }
 

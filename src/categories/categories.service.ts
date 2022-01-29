@@ -16,7 +16,11 @@ export class CategoriesService {
   }
 
   async createOrUpdateCategory(category: Category): Promise<Category> {
-    return await this.categoryRepository.save(category);
+    if (category.name != '') {
+      return await this.categoryRepository.save(category);
+    } else {
+      throw await new Error(`Category cant be empty`);
+    }
   }
 
   async getCategoryById(id: number): Promise<Category> {

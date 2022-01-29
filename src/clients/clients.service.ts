@@ -49,7 +49,11 @@ export class ClientsService {
   }
 
   async createOrUpdateClient(client: Client): Promise<Client> {
-    return await this.clientRepository.save(client);
+    if (client.phone != '') {
+      return await this.clientRepository.save(client);
+    } else {
+      throw await new Error(`Client phone cant be empty`);
+    }
   }
 
   async deleteClient(id: number): Promise<Client> {
