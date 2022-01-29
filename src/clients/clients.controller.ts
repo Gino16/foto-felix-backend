@@ -29,6 +29,7 @@ export class ClientsController {
     let firstname = '';
     let lastname = '';
     let email = '';
+    let phone = '';
 
     if (
       query.dni != null &&
@@ -62,7 +63,21 @@ export class ClientsController {
     ) {
       email = query.email;
     }
-    return this.clientService.searchClient(dni, firstname, lastname, email);
+    if (
+      query.phone != null &&
+      query.phone != '' &&
+      query.phone != undefined &&
+      query.phone != 'undefined'
+    ) {
+      phone = query.phone;
+    }
+    return this.clientService.searchClient(
+      dni,
+      firstname,
+      lastname,
+      email,
+      phone,
+    );
   }
 
   @Post()

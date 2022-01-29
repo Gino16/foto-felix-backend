@@ -25,13 +25,20 @@ export class ClientsService {
     return client;
   }
 
-  async searchClient(dni, firstname, lastname, email): Promise<Client[]> {
+  async searchClient(
+    dni,
+    firstname,
+    lastname,
+    email,
+    phone,
+  ): Promise<Client[]> {
     return await this.clientRepository.find({
       where: {
         dni: Like(`%${dni}%`),
         firstname: Like(`%${firstname}%`),
         lastname: Like(`%${lastname}%`),
         email: Like(`%${email}%`),
+        phone: Like(`%${phone}%`),
       },
       order: { id: 'ASC' },
     });
