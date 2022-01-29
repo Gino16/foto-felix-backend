@@ -17,7 +17,7 @@ export class ImagesService {
     if (!image) {
       throw new NotFoundException(`Image with id "${id}" not found`);
     }
-    image.imgUrl = `${process.env.STORAGE}/uploads/${image.imgUrl}`;
+    image.imgUrl = `${image.imgUrl}`;
     return image;
   }
 
@@ -61,7 +61,7 @@ export class ImagesService {
       order: { id: 'ASC' },
     });
     (await images).map((image) => {
-      image.imgUrl = `${process.env.STORAGE}/uploads/${image.imgUrl}`;
+      image.imgUrl = `${image.imgUrl}`;
     });
     return images;
   }
