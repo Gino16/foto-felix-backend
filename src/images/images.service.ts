@@ -31,7 +31,7 @@ export class ImagesService {
       order: { id: 'ASC' },
     });
     (await images).map((image) => {
-      image.imgUrl = `${process.env.STORAGE}/uploads/${image.imgUrl}`;
+      image.imgUrl = `${image.imgUrl}`;
     });
     return images;
   }
