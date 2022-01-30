@@ -68,7 +68,9 @@ export class ImagesService {
     return images;
   }
 
-  async deleteTask(id: number): Promise<void> {
+  async deleteTask(id: number): Promise<Image> {
+    const image = await this.getImageById(id);
     await this.imageRepository.delete(id);
+    return image;
   }
 }
