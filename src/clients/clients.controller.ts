@@ -82,25 +82,22 @@ export class ClientsController {
 
   @Post()
   createOrUpdateClient(@Body() client: Client) {
-    if (client.dni != '') {
+    if (client.dni && client.dni != '') {
       client.dni = client.dni.toLowerCase();
     }
 
-    if (client.firstname != '') {
+    if (client.firstname && client.firstname != '') {
       client.firstname = client.firstname.toLowerCase();
     }
 
-    if (client.lastname != '') {
+    if (client.lastname && client.lastname != '') {
       client.lastname = client.lastname.toLowerCase();
     }
 
-    if (client.email != '') {
+    if (client.email && client.email != '') {
       client.email = client.email.toLowerCase();
     }
 
-    if (client.phone != '') {
-      client.phone = client.phone.toLowerCase();
-    }
 
     return this.clientService.createOrUpdateClient(client);
   }

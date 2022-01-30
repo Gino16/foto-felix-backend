@@ -22,7 +22,9 @@ export class ImagesService {
   }
 
   async createOrUpdateTask(image: Image): Promise<Image> {
-    return this.imageRepository.save(image);
+    let newImage = await this.imageRepository.save(image);
+    let newFinalImage = this.getImageById(newImage.id);
+    return newFinalImage;
   }
 
   async findAll(): Promise<Image[]> {
