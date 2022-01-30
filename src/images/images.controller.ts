@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Query } from '@nestjs/common';
 import { Image } from 'db/entities/image.entity';
 
 import { ImagesService } from './images.service';
@@ -18,8 +18,16 @@ export class ImagesController {
   }
 
   @Get('/search')
-  searchImage(@Body() image: Image) {
-    return this.imageService.searchImage(image);
+  searchImage(@Query() query) {
+    if(query.categoryId && query.clientId) {
+      return this.imageService.searchImage(query.categoryId,query.clientId);
+    } else if(query.categoryId) {
+      return this.imageService.searchImage(query.categoryId, null);
+    } else if(query.clientId) {
+      return this.imageService.searchImage(null,query.clientId);
+    } else {
+      return this.imageService.searchImage(null, null);
+    }
   }
   @Post()
   createTask(@Body() image: Image) {

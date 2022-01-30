@@ -36,20 +36,20 @@ export class ImagesService {
     return images;
   }
 
-  async searchImage(image: Image): Promise<Image[]> {
+  async searchImage(categoryId, clientId): Promise<Image[]> {
     let where: any;
-    if (image.category && image.client) {
+    if (categoryId && clientId) {
       where = {
-        category: image.category,
-        client: image.client,
+        categoryId: categoryId,
+        clientId: clientId,
       };
-    } else if (image.category) {
+    } else if (categoryId) {
       where = {
-        category: image.category,
+        categoryId: categoryId,
       };
-    } else if (image.client) {
+    } else if (clientId) {
       where = {
-        client: image.client,
+        clientId: clientId,
       };
     } else {
       where = {};
