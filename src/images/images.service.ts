@@ -40,16 +40,16 @@ export class ImagesService {
     let where: any;
     if (categoryId && clientId) {
       where = {
-        category_id: categoryId,
-        client_id: clientId,
+        category: categoryId,
+        client: clientId,
       };
     } else if (categoryId) {
       where = {
-        category_id: categoryId,
+        category: categoryId,
       };
     } else if (clientId) {
       where = {
-        client_id: clientId,
+        client: clientId,
       };
     } else {
       where = {};
