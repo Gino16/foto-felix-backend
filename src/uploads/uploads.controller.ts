@@ -1,4 +1,5 @@
-import { Controller, Get, Param, Res } from '@nestjs/common';
+import { Controller, Get, Param, Res, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { join } from 'path/posix';
 import { of } from 'rxjs';
 

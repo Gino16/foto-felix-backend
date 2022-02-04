@@ -6,11 +6,14 @@ import {
   Param,
   Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { Client } from 'db/entities/client.entity';
 import { ClientsService } from './clients.service';
 
 @Controller('clients')
+@UseGuards(AuthGuard())
 export class ClientsController {
   constructor(private clientService: ClientsService) {}
   @Get()
@@ -97,7 +100,6 @@ export class ClientsController {
     if (client.email && client.email != '') {
       client.email = client.email.toLowerCase();
     }
-
 
     return this.clientService.createOrUpdateClient(client);
   }
